@@ -2,18 +2,13 @@ variable "project_name" {
   default = "roboshop"
 }
 
-variable "environment" {
+variable "env" {
   default = "dev"
 }
 
-variable "num_instance" {
+variable "instance_num" {
   default = 2
 }
-
-# variable "instance_name"{
-#     type = list
-#     default = ["catalogue"]
-# }
 
 variable "sg_id" {
   default = "sg-0600160900a41e0f2"
