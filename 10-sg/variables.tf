@@ -9,7 +9,18 @@ variable "environment" {
 }
 
 variable "sg_name" {
-  default = "catalogue"
+  default = [
+        # databases
+        "mongodb", "redis", "mysql", "rabbitmq",
+        # backend
+        "catalogue", "user", "cart", "shipping", "payment",
+        # frontend
+        "frontend",
+        # bastion
+        "bastion",
+        # frontend load balancer
+        "frontend-lb"
+      ]
 }
 
 variable "sg_tags" {
@@ -18,7 +29,7 @@ variable "sg_tags" {
   }
 }
 
-variable "sg_description" {
-  default = "This sg for app"
-}
+# variable "sg_description" {
+#   default = "This sg for app"
+# }
 

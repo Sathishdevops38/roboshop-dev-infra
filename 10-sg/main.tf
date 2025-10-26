@@ -11,8 +11,9 @@
 #using own module
 module "this" {
   source = "git::https://github.com/Sathishdevops38/terraform-modules.git//sg_module?ref=main"
-  sg_name        = var.sg_name
-  description = var.sg_description
+  count = length(var.sg_name)
+  sg_name = var.sg_name[count.index]
+  description = "Created for ${var.sg_names[count.index]}"
   project_name = var.project_name
   environment = var.environment
   vpc_id = local.vpc_id
