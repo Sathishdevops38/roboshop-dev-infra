@@ -8,10 +8,5 @@ variable "environment" {
   default = "dev"
 }
 
-variable "sg_rule_tags" {
-  default = {
-    created_by = "terraform"
-  }
-}
 
 
