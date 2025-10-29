@@ -19,7 +19,7 @@ variable "load_balancer_type" {
 }
 
 variable "target_type" {
-  default = "alb"
+  default = "ip"
 }
 
 variable "port" {
@@ -27,7 +27,7 @@ variable "port" {
 }
 
 variable "protocol" {
-  default = "TCP"
+  default = "HTTP"
 }
 
 variable "alb_tg_tags"{

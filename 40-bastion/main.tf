@@ -1,11 +1,12 @@
 module "bastion" {  
-  source = "git::https://github.com/Sathishdevops38/terraform-modules.git//ec2_module?ref=main"
+  source = "git::https://github.com/Sathishdevops38/terraform-modules.git//20-bastion-module?ref=main"
   # ami=local.ami_id
   project_name = var.project_name
   environment = var.environment
   subnet_id = local.public_subnet_id  
   instance_type = var.instance_type
   sg_ids =   [local.bastion_sg_id]
+  user_data = file("bastion.sh")
   tags= merge(
     var.tags,
     local.common_tags,{

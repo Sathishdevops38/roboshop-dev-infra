@@ -24,3 +24,8 @@ variable "tags" {
     Terraform = true
   }
 }
+
+# variable "user_data" {
+#   type = string
+# }
+

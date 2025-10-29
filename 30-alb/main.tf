@@ -23,12 +23,14 @@ resource "aws_lb_listener" "front_end" {
   protocol          = "HTTP"
 
   default_action {
-    type = "fixed-response"
+    type = "forward"
 
-    fixed_response {
-      content_type = "text/plain"
-      message_body = "Fixed response content"
-      status_code  = "200"
+  forward {
+      target_group {
+        arn    = module.frontend_alb.tg_arn
+        weight = 100
+      }
     }
   }
 }
+
