@@ -16,3 +16,19 @@ module "frontend_alb" {
   vpc_id = local.vpc_id
   alb_tg_tags = var.alb_tg_tags
 }
+
+resource "aws_lb_listener" "front_end" {
+  load_balancer_arn = module.frontend_alb.alb_arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type = "fixed-response"
+
+    fixed_response {
+      content_type = "text/plain"
+      message_body = "Fixed response content"
+      status_code  = "200"
+    }
+  }
+}

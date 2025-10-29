@@ -1,5 +1,5 @@
 data "aws_ssm_parameter" "frontend_lb_sg_id" {
-  name = "/${var.project_name}/${var.environment}/frontend-lb_sg_id"
+  name = "/${var.project_name}/${var.environment}/frontend_lb_sg_id"
 }
 
 data "aws_ssm_parameter" "public_subnet_ids" {
