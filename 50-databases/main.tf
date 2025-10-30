@@ -51,7 +51,7 @@ resource "terraform_data" "mongodb" {
             Name = "${local.common_name_suffix}-redis" # roboshop-dev-redis
         }
     )
-}
+# }
 
 # resource "terraform_data" "redis" {
   triggers_replace = [
@@ -77,7 +77,7 @@ resource "terraform_data" "mongodb" {
         "sudo sh /tmp/bootstrap.sh redis"
     ]
   }
-}
+# }
 
 
 # resource "aws_instance" "rabbitmq" {
@@ -92,7 +92,7 @@ resource "terraform_data" "mongodb" {
             Name = "${local.common_name_suffix}-rabbitmq" # roboshop-dev-rabbitmq
         }
     )
-}
+# }
 
 # resource "terraform_data" "rabbitmq" {
   triggers_replace = [
@@ -118,7 +118,7 @@ resource "terraform_data" "mongodb" {
         "sudo sh /tmp/bootstrap.sh rabbitmq"
     ]
   }
-}
+# }
 
 # resource "aws_instance" "mysql" {
     ami = local.ami_id
@@ -133,12 +133,12 @@ resource "terraform_data" "mongodb" {
             Name = "${local.common_name_suffix}-mysql" # roboshop-dev-mysql
         }
     )
-}
+# }
 
 # resource "aws_iam_instance_profile" "mysql" {
   name = "mysql"
   role = "EC2SSMParameterRead"
-}
+# }
 
 # resource "terraform_data" "mysql" {
   triggers_replace = [
@@ -164,7 +164,7 @@ resource "terraform_data" "mongodb" {
         "sudo sh /tmp/bootstrap.sh mysql dev"
     ]
   }
-}
+# }
 
 resource "aws_route53_record" "mongodb" {
   zone_id = var.zone_id
@@ -182,7 +182,7 @@ resource "aws_route53_record" "mongodb" {
   ttl     = 1
   records = [aws_instance.redis.private_ip]
   allow_overwrite = true
-}
+# }
 
 # resource "aws_route53_record" "mysql" {
   zone_id = var.zone_id
@@ -191,7 +191,7 @@ resource "aws_route53_record" "mongodb" {
   ttl     = 1
   records = [aws_instance.mysql.private_ip]
   allow_overwrite = true
-}
+# }
 
 # resource "aws_route53_record" "rabbitmq" {
   zone_id = var.zone_id
@@ -200,4 +200,4 @@ resource "aws_route53_record" "mongodb" {
   ttl     = 1
   records = [aws_instance.rabbitmq.private_ip]
   allow_overwrite = true
-}
+# }
