@@ -11,7 +11,7 @@ resource "aws_ssm_parameter" "password" {
 }
 
 resource "aws_ssm_parameter" "mysql_root_password" {
-  name = "/${var.project_name}/${var.environment}/mysql"
+  name = "/${var.project_name}/${var.environment}/mysql/mysql_root_password"
   type = "String"
   value = "RoboShop@1"
 }
