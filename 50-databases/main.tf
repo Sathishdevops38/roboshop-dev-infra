@@ -39,7 +39,7 @@ resource "terraform_data" "mongodb" {
   }
 }
 
-resource "aws_instance" "redis" {
+# resource "aws_instance" "redis" {
     ami = local.ami_id
     instance_type = "t3.micro"
     vpc_security_group_ids = [local.redis_sg_id]
@@ -53,7 +53,7 @@ resource "aws_instance" "redis" {
     )
 }
 
-resource "terraform_data" "redis" {
+# resource "terraform_data" "redis" {
   triggers_replace = [
     aws_instance.redis.id
   ]
@@ -80,7 +80,7 @@ resource "terraform_data" "redis" {
 }
 
 
-resource "aws_instance" "rabbitmq" {
+# resource "aws_instance" "rabbitmq" {
     ami = local.ami_id
     instance_type = "t3.micro"
     vpc_security_group_ids = [local.rabbitmq_sg_id]
@@ -94,7 +94,7 @@ resource "aws_instance" "rabbitmq" {
     )
 }
 
-resource "terraform_data" "rabbitmq" {
+# resource "terraform_data" "rabbitmq" {
   triggers_replace = [
     aws_instance.rabbitmq.id
   ]
@@ -120,7 +120,7 @@ resource "terraform_data" "rabbitmq" {
   }
 }
 
-resource "aws_instance" "mysql" {
+# resource "aws_instance" "mysql" {
     ami = local.ami_id
     instance_type = "t3.micro"
     vpc_security_group_ids = [local.mysql_sg_id]
@@ -135,12 +135,12 @@ resource "aws_instance" "mysql" {
     )
 }
 
-resource "aws_iam_instance_profile" "mysql" {
+# resource "aws_iam_instance_profile" "mysql" {
   name = "mysql"
   role = "EC2SSMParameterRead"
 }
 
-resource "terraform_data" "mysql" {
+# resource "terraform_data" "mysql" {
   triggers_replace = [
     aws_instance.mysql.id
   ]
@@ -175,7 +175,7 @@ resource "aws_route53_record" "mongodb" {
   allow_overwrite = true
 }
 
-resource "aws_route53_record" "redis" {
+# resource "aws_route53_record" "redis" {
   zone_id = var.zone_id
   name    = "redis-${var.environment}.${var.domain_name}" # redis-dev.daws86s.fun
   type    = "A"
@@ -184,7 +184,7 @@ resource "aws_route53_record" "redis" {
   allow_overwrite = true
 }
 
-resource "aws_route53_record" "mysql" {
+# resource "aws_route53_record" "mysql" {
   zone_id = var.zone_id
   name    = "mysql-${var.environment}.${var.domain_name}" # mysql-dev.daws86s.fun
   type    = "A"
@@ -193,7 +193,7 @@ resource "aws_route53_record" "mysql" {
   allow_overwrite = true
 }
 
-resource "aws_route53_record" "rabbitmq" {
+# resource "aws_route53_record" "rabbitmq" {
   zone_id = var.zone_id
   name    = "rabbitmq-${var.environment}.${var.domain_name}" # rabbitmq-dev.daws86s.fun
   type    = "A"
