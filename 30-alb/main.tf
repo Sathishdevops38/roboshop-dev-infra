@@ -17,7 +17,7 @@ module "backend_alb" {
   alb_tg_tags = var.alb_tg_tags
 }
 
-resource "aws_lb_listener" "backend" {
+resource "aws_lb_listener" "backend_alb" {
   load_balancer_arn = module.backend_alb.alb_arn
   port              = "80"
   protocol          = "HTTP"
