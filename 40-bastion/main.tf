@@ -6,12 +6,10 @@ module "bastion" {
   subnet_id = local.public_subnet_id  
   instance_type = var.instance_type
   sg_ids =   [local.bastion_sg_id]
-  iam_instance_profile = aws_iam_instance_profile.bastion.name
+  iam_profile_name = aws_iam_instance_profile.bastion.name
     # need more for terraform
-  root_block_device {
-    volume_size = 50
-    volume_type = "gp3" # or "gp2", depending on your preference
-}
+  root_volume_size = 50
+  root_volume_type = "gp3"
 
   user_data = file("bastion.sh")
   tags= merge(
