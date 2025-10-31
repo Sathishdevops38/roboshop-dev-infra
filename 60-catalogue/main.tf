@@ -49,6 +49,10 @@ resource "aws_ami_from_instance" "catalogue-ami" {
   name               = "${var.project_name}-${var.environment}-catalogue-ami"
   source_instance_id = aws_instance.catalogue.id
   depends_on = [ aws_ec2_instance_state.catalogue ]
+  provisioner "local-exec" {
+    command = "aws ec2 terminate-instances --instance-ids ${self.source_instance_id} --region ${var.aws_region}"
+    when = create
+  }
   tags = merge (
         local.common_tags,
         {

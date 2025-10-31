@@ -9,3 +9,7 @@ variable "environment" {
 variable "domain_name" {
   default = "daws38sat.fun"
 }
+
+variable "aws_region" {
+  default = "us-west-2"
+}
