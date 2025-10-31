@@ -1,9 +1,9 @@
-module "frontend_alb" {
+module "backend_alb" {
   source = "git::https://github.com/Sathishdevops38/terraform-modules.git//30-alb-module?ref=main"
   name = local.alb_name
   project_name = var.project_name
   environment = var.environment
-  security_groups = local.frontend_lb_sg_id
+  security_groups = local.backend_lb_sg_id
   subnets = local.public_subnet_id
   alb_tags = var.alb_tags
   load_balancer_type = var.load_balancer_type
@@ -17,8 +17,8 @@ module "frontend_alb" {
   alb_tg_tags = var.alb_tg_tags
 }
 
-resource "aws_lb_listener" "front_end" {
-  load_balancer_arn = module.frontend_alb.alb_arn
+resource "aws_lb_listener" "backend" {
+  load_balancer_arn = module.backend_alb.alb_arn
   port              = "80"
   protocol          = "HTTP"
 
@@ -27,7 +27,7 @@ resource "aws_lb_listener" "front_end" {
 
   forward {
       target_group {
-        arn    = module.frontend_alb.tg_arn
+        arn    = module.backend_alb.tg_arn
         weight = 100
       }
     }
