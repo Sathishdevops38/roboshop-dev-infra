@@ -61,7 +61,7 @@ resource "aws_lb_target_group" "catalogue" {
   name = "${var.project_name}-${var.environment}-catalogue-tg"
   port        = 8080
   protocol    = "HTTP"
-  target_type = "ip"
+  target_type = "instance"
   vpc_id      = local.vpc_id
   deregistration_delay = 60 # waiting period before deleting the instance
   health_check {
