@@ -1,6 +1,6 @@
 locals {
-  alb_name= "${var.project_name}-${var.environment}-frontend-alb" 
-  tg_name = "${var.project_name}-${var.environment}-frontend-alb-tg" 
+  alb_name= "${var.project_name}-${var.environment}-backend-alb" 
+  tg_name = "${var.project_name}-${var.environment}-backend-alb-tg" 
   frontend_lb_sg_id = data.aws_ssm_parameter.frontend_lb_sg_id.value
   public_subnet_id = split("," , data.aws_ssm_parameter.public_subnet_ids.value)[*]
   backend_lb_sg_id = data.aws_ssm_parameter.backend_lb_sg_id.value
