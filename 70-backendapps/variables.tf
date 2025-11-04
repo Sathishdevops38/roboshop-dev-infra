@@ -4,6 +4,7 @@ variable "components" {
     instance_type       = string
     port                = number
     health_check_path   = string
+    alb_priority = number
   }))
   default = {
     "catalogue" = {
@@ -42,4 +43,6 @@ variable "aws_region" {
 variable "domain_name" {
   default = "daws38sat.fun"
 }
+
+
 
