@@ -80,3 +80,12 @@ resource "aws_security_group_rule" "catalogue_backend_alb" {
   protocol          = "tcp"
   to_port           = 8080
 }
+
+resource "aws_security_group_rule" "user_backend_alb" {
+  type              = "ingress"
+  security_group_id = local.user_sg_id
+  source_security_group_id = local.backend_lb_sg_id
+  from_port         = 8080
+  protocol          = "tcp"
+  to_port           = 8080
+}
