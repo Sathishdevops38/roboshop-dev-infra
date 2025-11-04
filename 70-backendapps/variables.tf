@@ -10,11 +10,13 @@ variable "components" {
       instance_type       = "t3.micro"
       port                = 8080
       health_check_path   = "/"
+      alb_priority = 10
     }
     "user" = {
       instance_type       = "t3.small"
       port                = 8080
       health_check_path   = "/"
+      alb_priority = 20
     }
   #   "shipping" = {
   #     instance_type       = "t3.micro"
