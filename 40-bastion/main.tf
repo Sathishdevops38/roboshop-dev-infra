@@ -1,5 +1,5 @@
 module "bastion" {  
-  source = "git::https://github.com/Sathishdevops38/terraform-modules.git//ec2_module?ref=main"
+  source = "git::https://github.com/Sathishdevops38/terraform-modules.git//20-bastion-module?ref=main"
   # ami=local.ami_id
   project_name = var.project_name
   environment = var.environment
