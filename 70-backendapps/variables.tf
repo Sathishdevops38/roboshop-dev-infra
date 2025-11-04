@@ -4,20 +4,20 @@ variable "components" {
     instance_type       = string
     port                = number
     health_check_path   = string
-    alb_priority = number
+    priority = number
   }))
   default = {
     "catalogue" = {
       instance_type       = "t3.micro"
       port                = 8080
       health_check_path   = "/health"
-      alb_priority = 10
+      priority = 10
     }
     "user" = {
       instance_type       = "t3.small"
       port                = 8080
       health_check_path   = "/health"
-      alb_priority = 20
+      priority = 20
     }
   #   "shipping" = {
   #     instance_type       = "t3.micro"

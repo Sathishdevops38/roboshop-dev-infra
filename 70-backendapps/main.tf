@@ -20,8 +20,4 @@ module "roboshop_components" {
   instance_type        = each.value.instance_type  # e.g., "t3.micro"
   application_port     = each.value.port           # e.g., 8080
   health_check_path    = each.value.health_check_path # e.g., "/health"
-
- # 💡 ADD THIS REQUIRED ARGUMENT
-  alb_priority         = each.value.alb_priority
-  
 }
