@@ -35,7 +35,7 @@ variable "components" {
     "shipping" = {
       instance_type       = "t3.micro"
       port                = 8080
-      health_check_path   = "/"
+      health_check_path   = "/health"
       priority = 40
     }
   }
