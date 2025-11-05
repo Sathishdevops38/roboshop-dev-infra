@@ -7,7 +7,7 @@ resource "aws_instance" "frontend" {
     tags = merge (
         local.common_tags,
         {
-            Name = "${var.project_name}-${var.environment}-frontend" # roboshop-dev-catalogue
+            Name = "${var.project_name}-${var.environment}-frontend" # roboshop-dev-frontend
         }
 )
 }
@@ -33,8 +33,8 @@ resource "terraform_data" "frontend" {
   provisioner "remote-exec" {
     inline = [
         "chmod +x /tmp/frontend.sh",
-        # "sudo sh /tmp/catalogue.sh"
-        "sudo sh /tmp/frontend.sh catalogue ${var.environment}"
+        # "sudo sh /tmp/frontend.sh"
+        "sudo sh /tmp/frontend.sh frontend ${var.environment}"
     ]
   }
 }
