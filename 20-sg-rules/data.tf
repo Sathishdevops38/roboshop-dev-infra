@@ -6,6 +6,14 @@ data "aws_ssm_parameter" "backend_lb_sg_id" {
   name = "/${var.project_name}/${var.environment}/backend_lb_sg_id"
 }
 
+data "aws_ssm_parameter" "frontend_lb_sg_id" {
+  name = "/${var.project_name}/${var.environment}/frontend_lb_sg_id"
+}
+
+data "aws_ssm_parameter" "frontend_sg_id" {
+  name = "/${var.project_name}/${var.environment}/frontend_sg_id"
+}
+
 data "aws_ssm_parameter" "mongodb_sg_id" {
   name = "/${var.project_name}/${var.environment}/mongodb_sg_id"
 }
