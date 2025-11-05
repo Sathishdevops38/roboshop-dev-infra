@@ -14,16 +14,30 @@ variable "components" {
       priority = 10
     }
     "user" = {
-      instance_type       = "t3.small"
+      instance_type       = "t3.micro"
       port                = 8080
       health_check_path   = "/health"
       priority = 20
     }
-  #   "shipping" = {
-  #     instance_type       = "t3.micro"
-  #     port                = 8080
-  #     health_check_path   = "/"
-  #   }
+    "cart" = {
+      instance_type       = "t3.micro"
+      port                = 8080
+      health_check_path   = "/health"
+      priority = 30
+    }
+
+    "payment" = {
+      instance_type       = "t3.micro"
+      port                = 8080
+      health_check_path   = "/health"
+      priority = 40
+    }
+    "shipping" = {
+      instance_type       = "t3.micro"
+      port                = 8080
+      health_check_path   = "/"
+      priority = 40
+    }
   }
 }
 
