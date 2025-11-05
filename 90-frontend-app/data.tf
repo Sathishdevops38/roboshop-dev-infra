@@ -13,8 +13,8 @@ data "aws_ami" "ami_2023" {
   }
 }
 
-data "aws_ssm_parameter" "private_subnet_ids" {
-  name = "/${var.project_name}/${var.environment}/private_subnet_ids"
+data "aws_ssm_parameter" "public_subnet_ids" {
+  name = "/${var.project_name}/${var.environment}/public_subnet_ids"
 }
 
 data "aws_ssm_parameter" "frontend_sg_id" {
