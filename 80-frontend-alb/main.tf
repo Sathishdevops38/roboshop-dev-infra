@@ -34,3 +34,16 @@ resource "aws_lb_listener" "frontend_alb" {
   }
 }
 
+resource "aws_route53_record" "frontend" {
+  zone_id = var.zone_id
+  name    = "${var.environment}.${var.domain_name}" # daws86s.fun
+  type    = "A"
+  ttl     = 1
+
+  alias {
+    name                   = module.frontend_alb.alb_dns_name
+    zone_id                = var.zone_id
+    evaluate_target_health = true
+  }
+}
+
