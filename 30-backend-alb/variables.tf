@@ -35,3 +35,7 @@ variable "alb_tg_tags"{
     created_by = "terraform"
   }
 }
+
+variable "internal" {
+  default = true
+}

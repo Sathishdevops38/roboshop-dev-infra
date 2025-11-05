@@ -7,6 +7,7 @@ module "backend_alb" {
   subnets = local.private_subnet_id
   alb_tags = var.alb_tags
   load_balancer_type = var.load_balancer_type
+  internal = var.internal
 
   #tg config
   tg_name = local.tg_name
