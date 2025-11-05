@@ -19,7 +19,7 @@ variable "load_balancer_type" {
 }
 
 variable "target_type" {
-  default = "instance"    #ip
+  default = "instance"
 }
 
 variable "port" {
