@@ -8,32 +8,32 @@ variable "components" {
   }))
   default = {
     "catalogue" = {
-      instance_type       = "t3.micro"
+      instance_type       = "t2.small"
       port                = 8080
       health_check_path   = "/health"
       priority = 10
     }
     "user" = {
-      instance_type       = "t3.micro"
+      instance_type       = "t2.small"
       port                = 8080
       health_check_path   = "/health"
       priority = 20
     }
     "cart" = {
-      instance_type       = "t3.micro"
+      instance_type       = "t2.small"
       port                = 8080
       health_check_path   = "/health"
       priority = 30
     }
 
     "payment" = {
-      instance_type       = "t3.micro"
+      instance_type       = "t2.small"
       port                = 8080
       health_check_path   = "/health"
       priority = 40
     }
     "shipping" = {
-      instance_type       = "t3.micro"
+      instance_type       = "t2.small"
       port                = 8080
       health_check_path   = "/health"
       priority = 50
