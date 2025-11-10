@@ -19,17 +19,18 @@ module "frontend_alb" {
 
 resource "aws_lb_listener" "frontend_alb" {
   load_balancer_arn = module.frontend_alb.alb_arn
-  port              = "80"
-  protocol          = "HTTP"
+  port              = "443"
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-TLS13-1-3-2021-06"
+  certificate_arn   = local.frontend_alb_certificate_arn
 
   default_action {
-    type = "forward"
+    type = "fixed-response"
 
-  forward {
-      target_group {
-        arn    = module.frontend_alb.tg_arn
-        weight = 100
-      }
+    fixed_response {
+      content_type = "text/html"
+      message_body = "<h1>Hi, I am from HTTPS frontend ALB</h1>"
+      status_code  = "200"
     }
   }
 }
