@@ -49,10 +49,10 @@ resource "aws_ami_from_instance" "frontend-ami" {
   name               = "${var.project_name}-${var.environment}-frontend-ami"
   source_instance_id = aws_instance.frontend.id
   depends_on = [ aws_ec2_instance_state.frontend ]
-  provisioner "local-exec" {
-    command = "aws ec2 terminate-instances --instance-ids ${self.source_instance_id} --region ${var.aws_region}"
-    when = create
-  }
+  # provisioner "local-exec" {
+  #   command = "aws ec2 terminate-instances --instance-ids ${self.source_instance_id} --region ${var.aws_region}"
+  #   when = create
+  # }
   tags = merge (
         local.common_tags,
         {
@@ -186,5 +186,16 @@ resource "aws_lb_listener_rule" "frontend" {
     host_header {
       values = ["frontend.frontend-alb-${var.environment}.${var.domain_name}"]
     }
+  }
+}
+
+resource "terraform_data" "frontend_local" {
+  triggers_replace = [
+    aws_instance.frontend.id
+  ]
+  
+  depends_on = [aws_autoscaling_policy.example]
+  provisioner "local-exec" {
+    command = "aws ec2 terminate-instances --instance-ids ${aws_instance.component.id}"
   }
 }
