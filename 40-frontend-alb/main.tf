@@ -37,7 +37,7 @@ resource "aws_lb_listener" "frontend_alb" {
 
 resource "aws_route53_record" "frontend" {
   zone_id = var.zone_id
-  name    = "${var.environment}.${var.domain_name}" # daws86s.fun
+  name    = "${var.environment}.${var.domain_name}" # daws38sat.fun
   type    = "A"
   alias {
     name                   = module.frontend_alb.alb_dns_name
