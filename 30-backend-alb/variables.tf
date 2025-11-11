@@ -39,3 +39,12 @@ variable "alb_tg_tags"{
 variable "internal" {
   default = true
 }
+
+variable "zone_id" {
+  default = "Z05700624Q21KABEP00F"
+}
+
+variable "domain_name" {
+  default = "daws38sat.fun"
+}
+
