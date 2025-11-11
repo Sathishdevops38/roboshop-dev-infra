@@ -1,44 +1,32 @@
-variable "components" {
-  description = "Map of components to deploy with specific settings."
-  type = map(object({
-    instance_type       = string
-    port                = number
-    health_check_path   = string
-    priority = number
-  }))
-  default = {
-    "catalogue" = {
-      instance_type       = "t2.small"
-      port                = 8080
-      health_check_path   = "/health"
-      priority = 10
-    }
-    "user" = {
-      instance_type       = "t2.small"
-      port                = 8080
-      health_check_path   = "/health"
-      priority = 20
-    }
-    "cart" = {
-      instance_type       = "t2.small"
-      port                = 8080
-      health_check_path   = "/health"
-      priority = 30
-    }
+variable "component" {
+    default = "catalogue"
+}
 
-    "payment" = {
-      instance_type       = "t2.small"
-      port                = 8080
-      health_check_path   = "/health"
-      priority = 40
+variable "rule_priority" {
+    default = 10
+}
+
+variable "components" {
+    default = {
+        catalogue = {
+            rule_priority = 10
+        }
+        user = {
+            rule_priority = 20
+        }
+        cart = {
+            rule_priority = 30
+        }
+        shipping = {
+            rule_priority = 40
+        }
+        payment = {
+            rule_priority = 50
+        }
+        frontend = {
+            rule_priority = 10
+        }
     }
-    "shipping" = {
-      instance_type       = "t2.small"
-      port                = 8080
-      health_check_path   = "/health"
-      priority = 50
-    }
-  }
 }
 
 
