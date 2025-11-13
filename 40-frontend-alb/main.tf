@@ -25,12 +25,13 @@ resource "aws_lb_listener" "frontend_alb" {
   certificate_arn   = local.frontend_alb_certificate_arn
 
   default_action {
-    type = "fixed-response"
+    type = "forward"
 
-    fixed_response {
-      content_type = "text/html"
-      message_body = "<h1>Hi, I am from HTTPS frontend ALB</h1>"
-      status_code  = "200"
+    forward {
+      target_group {
+        arn    = module.frontend_alb.tg_arn
+        weight = 100
+      }
     }
   }
 }
