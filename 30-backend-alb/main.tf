@@ -24,13 +24,12 @@ resource "aws_lb_listener" "backend_alb" {
   protocol          = "HTTP"
 
   default_action {
-    type = "forward"
+    type = "fixed-response"
 
-  forward {
-      target_group {
-        arn    = module.backend_alb.tg_arn
-        weight = 100
-      }
+    fixed_response {
+      content_type = "text/plain"
+      message_body = "Hi, I am from backend ALB HTTP"
+      status_code  = "200"
     }
   }
 }
